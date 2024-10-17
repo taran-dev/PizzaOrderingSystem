@@ -1,0 +1,93 @@
+<div class="container mt-4">
+    <h1 class="mb-4">Create Your Own Pizza</h1>
+    <div class="mb-4">
+      <h5>Promotional Offer:</h5>
+      <ul>
+        <li>Offer 1 - 1 Medium Pizza with 2 toppings = $5</li>
+        <li>Offer 2 - 2 Medium Pizzas with 4 toppings each = $9</li>
+        <li>
+          Offer 3 - 1 Large with 4 toppings (Pepperoni and Barbecue chicken are
+          counted as 2 toppings) - 50% discount
+        </li>
+      </ul>
+    </div>
+  
+    <div>
+      <table class="table table-bordered border-secondary">
+        <thead class="text-center">
+          <tr>
+            <th class="align-middle" rowspan="2">Toppings</th>
+            <th colspan="4">Pizza Size</th>
+          </tr>
+          <tr>
+            <th>Small ($5)</th>
+            <th>Medium ($7)</th>
+            <th>Large ($8)</th>
+            <th>Extra Large ($9)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Veg Toppings Section -->
+          <tr>
+            <th colspan="5" class="text-center table-secondary">Veg Toppings</th>
+          </tr>
+          <ng-container *ngFor="let topping of toppings">
+            <tr *ngIf="topping.type === ToppingType.Veg">
+                <td class="col-2">{{ topping.name }} ({{ topping.price | currency }})</td>
+                <td class="col-2"><input type="checkbox" class="form-check-input" (change)="onToppingChange('small', topping, $event)"/></td>
+                <td class="col-2"><input type="checkbox" class="form-check-input" (change)="onToppingChange('medium', topping, $event)"/></td>
+                <td class="col-2"><input type="checkbox" class="form-check-input" (change)="onToppingChange('large', topping, $event)"/></td>
+                <td class="col-2"><input type="checkbox" class="form-check-input" (change)="onToppingChange('extraLarge', topping, $event)"/></td>
+            </tr>
+          </ng-container>
+  
+          <!-- Non-Veg Toppings Section -->
+          <tr>
+            <th colspan="5" class="text-center table-secondary">Non Veg Toppings</th>
+          </tr>
+          <ng-container *ngFor="let topping of toppings">
+            <tr *ngIf="topping.type === ToppingType.NonVeg">
+                <td class="col-2">{{ topping.name }} ({{ topping.price | currency }})</td>
+                <td class="col-2"><input type="checkbox" class="form-check-input" (change)="onToppingChange('small', topping, $event)"/></td>
+                <td class="col-2"><input type="checkbox" class="form-check-input" (change)="onToppingChange('medium', topping, $event)"/></td>
+                <td class="col-2"><input type="checkbox" class="form-check-input" (change)="onToppingChange('large', topping, $event)"/></td>
+                <td class="col-2"><input type="checkbox" class="form-check-input" (change)="onToppingChange('extraLarge', topping, $event)"/></td>
+            </tr>
+          </ng-container>
+  
+          <!-- Total Section -->
+          <tr class="table-light">
+            <th>Total</th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+  
+          <!-- Offer Section -->
+          <tr>
+            <th>Offer</th>
+            <td>{{ offerMessage('small') }}</td>
+            <td>{{ offerMessage('medium') }}</td>
+            <td>{{ offerMessage('large') }}</td>
+            <td>{{ offerMessage('extraLarge') }}</td>
+          </tr>
+  
+          <!-- Total Price Section -->
+          <tr>
+            <th>Total Price of Selected Items</th>
+            <td>{{ calculateTotalPrice('small') | currency }}</td>
+            <td>{{ calculateTotalPrice('medium') | currency }}</td>
+            <td>{{ calculateTotalPrice('large') | currency }}</td>
+            <td>{{ calculateTotalPrice('extraLarge') | currency }}</td>
+          </tr>
+        </tbody>
+      </table>
+  
+      <!-- Total Amount Label -->
+      <div class="text-end">
+        <h5>Total Amount: {{ calculateFullTotal() | currency }}</h5>
+      </div>
+    </div>
+  </div>
+  
