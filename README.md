@@ -2,6 +2,35 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.8.
 
+# Type Definitions
+
+Size {
+  name: string;
+  price: number;
+}
+
+Topping {
+  name: string;
+  type: ToppingType;
+  price: number;
+}
+
+Pizza {
+  toppings: Topping[];
+  size: Size;
+  quantity: number;
+}
+
+ToppingType {
+  NonVeg = 0,
+  Veg = 1
+}
+
+# Screenshot
++/- quantity buttons were also added to showcase the scenario for Offer 2.
+![image](https://github.com/user-attachments/assets/e79f8617-4e65-4f6c-9600-751add94664d)
+
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
