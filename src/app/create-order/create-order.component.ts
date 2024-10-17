@@ -73,7 +73,7 @@ export class CreateOrderComponent {
       return 0;
     }
   
-    total += selectedPizza.size.price;
+    total += selectedPizza.size.price * selectedPizza.quantity;
 
     selectedPizza.toppings.forEach(topping => {
       total += topping.price;
@@ -133,6 +133,18 @@ export class CreateOrderComponent {
     }
 
     return total;
+  }
+
+  // Increment pizza quantity
+  incrementQuantity(size: string): void {
+    this.pizza[size].quantity++;
+  }
+
+  // Decrement pizza quantity, ensuring it doesn't go below 1
+  decrementQuantity(size: string): void {
+    if (this.pizza[size].quantity > 1) {
+      this.pizza[size].quantity--;
+    }
   }
 
   onToppingChange(size: string, topping: Topping, event: Event): void {

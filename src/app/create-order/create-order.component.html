@@ -58,10 +58,26 @@
           <!-- Total Section -->
           <tr class="table-light">
             <th>Total</th>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td class="text-center">
+                <button (click)="decrementQuantity('small')" class="btn p-1 fw-bold">-</button>
+                {{ pizza['small'].quantity }}
+                <button (click)="incrementQuantity('small')" class="btn p-1 fw-bold">+</button>
+              </td>
+              <td class="text-center">
+                <button (click)="decrementQuantity('medium')" class="btn p-1 fw-bold">-</button>
+                {{ pizza['medium'].quantity }}
+                <button (click)="incrementQuantity('medium')" class="btn p-1 fw-bold">+</button>
+              </td>
+              <td class="text-center">
+                <button (click)="decrementQuantity('large')" class="btn p-1 fw-bold">-</button>
+                {{ pizza['large'].quantity }}
+                <button (click)="incrementQuantity('large')" class="btn p-1 fw-bold">+</button>
+              </td>
+              <td class="text-center">
+                <button (click)="decrementQuantity('extraLarge')" class="btn p-1 fw-bold">-</button>
+                {{ pizza['extraLarge'].quantity }}
+                <button (click)="incrementQuantity('extraLarge')" class="btn p-1 fw-bold">+</button>
+              </td>
           </tr>
   
           <!-- Offer Section -->
